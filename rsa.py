@@ -1,7 +1,7 @@
 import math
 from utils import (input_prime, 
         find_e, 
-        find_d,
+        find_fast_d,
         print_msg,
         encrypt_msg,
         decrypt_msg,
@@ -40,7 +40,7 @@ e = find_e(n, z)
 # selection of d
 print("I am selecting the lowest possible value for d")
 # e*d % z == 1
-d = find_d(e, z)
+d = find_fast_d(e, z)
 if d is None:
     print("================== :( ================")
     print("Cannot solve")

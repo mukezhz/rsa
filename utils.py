@@ -86,3 +86,10 @@ def mplain_text():
             mlist.append(m)
     return mlist[:]
 
+def find_fast_d(e, z):
+    temp = None
+    for k in range(2, 100):
+        if (1+z*k)%e == 0:
+            temp = k
+            break
+    return (1 + z*temp) // e
