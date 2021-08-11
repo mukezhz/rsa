@@ -51,11 +51,11 @@ def print_msg(list1, list2, e , d, t=""):
     if t=="d":
         msg1="cyphers"
         exp_msg="c^d"
-        msg2="message [m = c^d % z]"
+        msg2="message [m = c^d % n]"
         exp = d
-    print(f"{msg1:>4}   {exp_msg:>46}           {msg2}:<8")
+    print(f"{msg1:>4}   {exp_msg:>46}           {msg2}")
     for i,t in enumerate(list1):
-        print(f"{t:>4}      {t**exp:>46}            {list2[i]:<8}")
+        print(f"{t:>4}      {t**exp:>46}            {list2[i]}")
         
 def encrypt_msg(mlist, e, n):
     clist = [m**e % n for m in mlist]
@@ -88,8 +88,12 @@ def mplain_text():
 
 def find_fast_d(e, z):
     temp = None
+    i = 0
     for k in range(2, 100):
+        i += 1
+        temp = k
         if (1+z*k)%e == 0:
-            temp = k
             break
+        else:
+            print(i, (1+z*temp)//e)
     return (1 + z*temp) // e
